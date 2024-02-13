@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library App</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <div class="add-book-popup" id="hidden">
+        <h1>Add a Book to Your Library</h1><br>
+        <form class="add-book-form" id="addBookForm" action="" method="POST">
+            <label>Title: </label><input type="text" id="title" name="title"><br>
+            <label>Author: </label><input type="text" id="author" name="author"><br>
+            <label>Pages: </label><input type="text" id="pages" name="pages"><br>
+            <span>Read Status: </span>
+            <label>Read</label><input type="radio" name="readStatus" value="read">
+            <label>Unread</label><input type="radio" name="readStatus" value="unread"><br>
+            <input type="submit" value="Submit"></input>
+            <button id="exit">Close</button>
+        </form>
+    </div>
+    <div class = "wrapper">
+        <div class = "bookshelf">
+            <div class="shelf" id="shelf">
+                
+                
+            </div>
+            <div class="shelf"></div>
+            <div class="shelf"></div>
+        </div>
+        <div class = "sidebar">
+            <div class="info-box">
+                <div class="info-book">
+                    <div class="info-book-left">
+                        <ul class="book-info-list">
+                            <li>Title: </li><span class="temp">Mistborn</span>
+                            <li>Author: </li><span class="temp">Brandon Sanderson</span>
+                            <li>Pages: </li><span class="temp">200</span>
+                            <li>Status: </li><span class="temp">Unread</span>
+                        </ul>
+                    </div>
+                    <div class="info-book-right"><button>Remove Book</button><br><button>Change Read Status</button></div>
+                </div>
+            </div>
+            <div class="buttons">
+                <button class="add-book-btn" id="addBookBtn">Add Book</button>
+            </div>
+        </div>
+    
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

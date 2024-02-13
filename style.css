@@ -1,0 +1,175 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+div{
+    box-sizing: border-box;
+}
+
+ul{
+    list-style-type: none;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    box-sizing: border-box;
+
+}
+
+
+.bookshelf {
+    border: rgb(102, 83, 71) 25px solid;
+    height: calc(100vh - 100px);
+    border-radius: 5px;
+    margin: 25px 25px 0px 25px;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    background-color: rgb(151, 126, 110);
+    
+
+}
+
+.shelf {
+    border-bottom: rgb(102, 83, 71) 10px solid;
+    border-top: rgb(102, 83, 71) 10px solid;
+    display: flex;
+    justify-content:flex-start;
+    align-items: flex-end;
+
+}
+
+.book{
+    font-size: 25px;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    background-color: white;
+    border-radius: 2px;
+    padding: 15px 2px;
+    text-align: center;
+    border: red 1px solid;
+    height: fit-content;
+
+
+}
+
+
+.sidebar {
+    margin: 25px 25px 0px 25px;
+    display: grid;
+    grid-template-columns: minmax(fit-content, auto)
+    
+}
+
+.info-box{
+    border: red 1px solid;
+    height: 75%;
+    width: 75%;
+    display: flex;
+    min-width: fit-content;
+    
+}
+
+.info-book{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 25px;
+    border: blue 5px solid;
+    height: 80%;
+    width: 100%;
+
+}
+
+.info-book-left, .info-book-right{
+    height: 100%;
+    border: rgb(199, 189, 157) 2px solid;
+    padding: 12px 18px;
+}
+
+.info-book-left li{
+    margin-bottom: 8px;
+}
+
+.info-book-left ul{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.buttons{
+    border: red 1px solid;
+    height: 75%;
+    width: 75%;
+}
+
+.add-book-btn{
+    
+
+}
+
+.add-book-popup{
+    z-index: 2;
+    height: 300px;
+    width: 400px;
+    position: absolute;
+    top: 50%;
+    left:50%;
+    background-color: white;
+    margin-left: -200px;
+    margin-top: -150px;
+    padding: 25px;
+    border: black 1px solid;
+    
+}
+
+.add-book-popup label, input{
+    margin-bottom: 12px;
+}
+
+#hidden{
+    display: none;
+}
