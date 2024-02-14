@@ -90,15 +90,71 @@ ul{
     text-orientation: mixed;
     background-color: white;
     border-radius: 2px;
-    padding: 15px 2px;
+    padding: 15px 2px 15px 2px;
     text-align: center;
     border: red 1px solid;
     height: fit-content;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    
 
 
 }
 
+.short{
+    width: 1.2em;
 
+}
+
+.medium{
+    width: 1.5em;
+}
+
+.long{
+    width: 2em;
+}
+
+.xlong{
+    width: 3em;
+}
+
+.blue{
+    background-color:rgb(91, 174, 247);
+    color:rgb(32, 47, 75);
+    border:rgb(54, 89, 165) 2px solid;
+
+}
+
+.red{
+    background-color:rgb(94, 28, 28);
+    color:antiquewhite;
+    border:rgb(134, 49, 43) 2px solid;
+}
+
+.green{
+    background-color: rgb(45, 97, 68);
+    color:antiquewhite;
+    border:rgb(18, 49, 40) 2px solid;
+
+}
+
+.purple{
+    background-color:rgb(49, 23, 97);
+    color:aliceblue;
+    border:rgb(87, 80, 165) 2px solid;
+
+}
+
+.yellow{
+    background-color: rgb(224, 205, 97);
+    color:rgb(77, 50, 16);
+    border:rgb(155, 109, 23) 2px solid;
+}
+
+.unread{
+    filter: grayscale(85%)!important;
+}
 .sidebar {
     margin: 25px 25px 0px 25px;
     display: grid;
