@@ -16,6 +16,7 @@ myLibrary[2] = new Book('Red Rising', 'Pierce Brown', '382', 'read');
 let addBookForm = document.getElementById('addBookForm');
 let addBookBtn = document.getElementById('addBookBtn');
 let exitAddBookBtn = document.getElementById('exit');
+let bookInfoList = document.getElementsByClassName('book-info-list');
 let bookCount = 3;
 
 addBookBtn.addEventListener('click', (e) => {
@@ -79,7 +80,9 @@ function displayAddedBook(){
     }
 
     addBook.innerHTML = `<div class='book ` + bookLength +` `+ colour + ` `+ readStatusColour + `'><span>` + myLibrary[bookCount].title + `</span></div>`;
+    
     shelf.appendChild(addBook);
+    displayBookInfo(addBook, myLibrary[bookCount]);
     bookCount++;
 
 }
@@ -112,10 +115,21 @@ function initialDisplayBook(){
             bookLength = 'xlong'
         }
         newBook.innerHTML = `<div class='book ` + bookLength +` `+ colour + ` `+ readStatusColour + `'><span>` + book.title + `</span></div>`;
+        displayBookInfo(newBook, book);
         shelf.appendChild(newBook);
         
     }
 
+}
+
+function displayBookInfo(bookEle, bookObj){
+    bookEle.addEventListener('click', (e) => {
+        let bookInfoList = document.getElementById('book-info-list');
+        bookInfoList.innerHTML = `<li>Title: </li><span class="temp">` + bookObj.title + `</span>
+        <li>Author: </li><span class="temp">`+ bookObj.author + `</span>
+        <li>Pages: </li><span class="temp">` + bookObj.pages + `</span>
+        <li>Status: </li><span class="temp">` + bookObj.readStatus + `</span>`;
+    })
 }
 
 function getBookInfo(){
