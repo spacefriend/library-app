@@ -15,20 +15,56 @@ myLibrary[2] = new Book('Red Rising', 'Pierce Brown', '382', 'read');
 
 let addBookForm = document.getElementById('addBookForm');
 let addBookBtn = document.getElementById('addBookBtn');
+let removeBookBtn = document.getElementById('remove-book-btn');
+let changeReadStatBtn = document.getElementById('change-read-status-btn');
 let exitAddBookBtn = document.getElementById('exit');
-let bookInfoList = document.getElementsByClassName('book-info-list');
-let bookCount = 3;
+let bookInfoList = document.getElementById('book-info-list');
+let currentBook = null;
 
+/*
+Makes Add Book form visible
+*/
 addBookBtn.addEventListener('click', (e) => {
     document.getElementById('hidden').id = 'visible';
 })
-
+/*
+Makes Add Book form invisible
+*/
 exitAddBookBtn.addEventListener('click', (e) => {
     e.preventDefault();
     document.getElementById('visible').id = 'hidden';
     
 })
 
+//Changes Read Status of selected book
+function changeReadStatus(){
+    if (myLibrary[currentBook].readStatus == 'read'){
+        myLibrary[currentBook].readStatus = 'unread';
+    }else{
+        myLibrary[currentBook].readStatus = 'read';
+    };
+    
+}
+
+/*
+Function removes selected book and re-displays books from edited array
+*/
+function removeBook(){
+    myLibrary.splice(currentBook, 1)
+    clearShelf();
+    initialDisplayBook();
+}
+
+removeBookBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    removeBook();
+
+})
+
+changeReadStatBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    changeReadStatus();
+})
 /* 
 Creates book object using user input, adds the object to the myLibrary array, and displays the new book
 */
@@ -43,19 +79,27 @@ addBookForm.addEventListener('submit', (e) => {
     const newBook = new Book(title, author, pages, readStatus);
     myLibrary.push(newBook);
     addBookForm.reset();
-    displayAddedBook();
+    displayAddedBook(newBook);
 })
+//Adds new book item to myLibrary array
 function addBookToLibrary(){
     const newBook = new Book(title, author, pages, readStatus);
     myLibrary = [...myLibrary, newBook];
 
 
 }
+/*
+Clears all book elements from shelf display
+*/
+function clearShelf(){
+    const shelf = document.getElementById('shelf');
+        shelf.innerHTML = ``;
+}
 
 /*
 Function for displaying a newly added book
 */
-function displayAddedBook(){
+function displayAddedBook(book){
     const shelf = document.getElementById('shelf');
     const addBook = document.createElement('div');
 
@@ -63,27 +107,27 @@ function displayAddedBook(){
     bookColoursRead.push(bookColoursRead.splice(bookColoursRead.indexOf(colour), 1)[0]);
 
     let readStatusColour = '';
-    if (myLibrary[bookCount].readStatus == 'unread'){
+    if (book.readStatus == 'unread'){
         readStatusColour = 'unread';
     }
 
     let bookLength = 'short';
 
-    if (myLibrary[bookCount].pages <= 300){
+    if (book.pages <= 300){
         bookLength = 'short';
-    }else if(myLibrary[bookCount].pages <= 450 ){
+    }else if(book.pages <= 450 ){
         bookLength = 'medium'
-    }else if(myLibrary[bookCount].pages <= 600){
+    }else if(book.pages <= 600){
         bookLength = 'long'
     }else{
         bookLength = 'xlong'
     }
 
-    addBook.innerHTML = `<div class='book ` + bookLength +` `+ colour + ` `+ readStatusColour + `'><span>` + myLibrary[bookCount].title + `</span></div>`;
+    addBook.innerHTML = `<div class='book ` + bookLength +` `+ colour + ` `+ readStatusColour + `'><span>` + book.title + `</span></div>`;
     
     shelf.appendChild(addBook);
-    displayBookInfo(addBook, myLibrary[bookCount]);
-    bookCount++;
+    displayBookInfo(addBook, book);
+    
 
 }
 /*
@@ -121,10 +165,11 @@ function initialDisplayBook(){
     }
 
 }
-
+//Displays info on selected book
 function displayBookInfo(bookEle, bookObj){
     bookEle.addEventListener('click', (e) => {
-        let bookInfoList = document.getElementById('book-info-list');
+        currentBook = myLibrary.indexOf(bookObj);
+        
         bookInfoList.innerHTML = `<li>Title: </li><span class="temp">` + bookObj.title + `</span>
         <li>Author: </li><span class="temp">`+ bookObj.author + `</span>
         <li>Pages: </li><span class="temp">` + bookObj.pages + `</span>
@@ -132,10 +177,7 @@ function displayBookInfo(bookEle, bookObj){
     })
 }
 
-function getBookInfo(){
-
-}
-
+//Displays default books on initial page load
 window.onload = function(){
     initialDisplayBook();
 }
